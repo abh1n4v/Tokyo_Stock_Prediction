@@ -1,0 +1,62 @@
+STOCK MARKET PREDICTION TOKYO
+
+ Tell us what the future holds, so we may know that you are god -Isaiah 41:23
+
+
+
+DATASET:
+    Kaggle:
+        https://www.kaggle.com/competitions/jpx-tokyo-stock-exchange-prediction/overview
+        * https://www.kaggle.com/code/smeitoma/jpx-competition-metric-definition
+        https://www.kaggle.com/code/chumajin/english-ver-easy-to-understand-the-competition/comments
+        https://www.kaggle.com/code/abaojiang/jpx-detailed-eda
+        https://www.kaggle.com/code/riteshsinha/useful-features-in-predicting-stock-prices
+        https://www.kaggle.com/code/paulorzp/jpx-simple-overfitting-model/notebook
+        https://www.kaggle.com/code/tensorchoko/jpx-eda-en
+
+Forecasting data and methods:
+    Qualitative forecasting: If no data is available or data given is irrelevant.
+    Quantitative forecasting: 1. numerical data about the past is available
+                              2. Some aspects of the past pattern will continue into the futur
+                We wll be using quantitative forecasting
+
+
+BASIC STEPS:
+
+1. PROBLEM DESCRIPTION:
+    Tokyo Stock Exchange prediction
+    We will have to rank the change ratio of adjusted close price between the next day and 2 days later for each stock.
+    Identify features that can be useful while making the models
+        Predict rate of change of closing price of top 200 and bottom 200 stocks on the following business day(t+1)  till the next following business day (t+2);  highest to lowest expected returns.
+        According to this, rank them according to the given metrics(*) for top and bottom 200
+         - Rank indicates ranking of the change rate of closing price (close) of the next day and the next day for each of 2000 stocks.
+           If the rate of change is large, it will be to the positive direction (buy for 100$ -> becomes 120$)
+           If the rate of change is small, it will be large to the negative direction (sell for 100$->becomes 80$)
+           This is why we take into consideration both top and bottom 200 of the ranked list.
+
+    Construct a robust model that predicts the "Target" column for top and bottom 200 stocks for the upcoming days. (i think im supposed to predict the buy price and sale price for t+1 and t+2, and then rank them accordingly)
+
+2. GATHERING INFORMATION:
+    Data has been given by kaggle. (Around 2MIL rows of training data in stock_prices.csv alone)
+    Fair to say, enough information has been provided (all real world information too, certain stock patterns can be correlated to evens that happened irl; eg:Failure of equity trading system on October 1 2020 which resulted in a lot of missing data on that day )
+
+3. PRELIMINARY ANALYSIS:
+    Make sure to use graphs, search for consistent patterns/ significant trends.
+    Since the nature of market can change dramatically between two periods of time due to a multitude of reasons, the model should not depend on changes in the data distribution. Keep it simple
+
+4. CHOOSING AND FITTING MODELS
+    Models in consideration:
+        DecisionTreeRegressor - basic test (should change)
+        ARIMA - Autoregressive(AR) Integrated Moving Average (MA)
+        XGBOOST - Extreme Gradient Boost
+        LSTM - Long Short Term Memory
+        + Simple and Exponential smoothing
+
+
+5. EVALUATION
+    Deal with missing values and outliers, and other practical issues.
+    Using the model to make forecasts.( Current preferred accuracy of over 60% so that it is atleast better than a coin toss)
+    Since kaggle has again provided supplementary data that will include data for coming months(june, july), evaluation and testing can be done more efficiently.
+    
+
+
